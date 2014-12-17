@@ -17,8 +17,8 @@ define([
 				})
 
 				// jsonwire:: setImplicitWaitTimeout
-				// FIXME: the test result vary per time waiting
-				.setTimeout('implicit', 5000)
+				// FIXME: the test result vary per time waiting. How to increase timeout to SauceLab??
+				.setTimeout('implicit', 4500)
 
 				.findAllByTagName('iframe')
 				.then(function (frames) {
@@ -53,6 +53,25 @@ define([
 					assert(requestFrameSrc, 'request frame exists');
 					assert(clearFrameSrc, 'clear frame exists');
 
+				})
+
+				.execute(function () {
+					if (window.performance && window.performance.getEntries) {
+						var items = window.performance
+								.getEntries()
+								.filter(function (x) { return x.name.indexOf('ib.adnxs.com') > 0;});
+						return {support: true, items: items}
+					} else {
+						return {support: false};
+					}
+
+				})
+				.then(function (result) {
+					if (result.support) {
+						assert(result.items.length >= 1, 'shall have adnxs request');
+					} else {
+						assert(true, 'resource timing API is not supported. no further assertion');
+					}
 				})
 			;
 		});
