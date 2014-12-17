@@ -22,14 +22,13 @@ define({
 	// OnDemand. Options that will be permutated are browserName, version, platform, and platformVersion; any other
 	// capabilities options specified for an environment will be copied as-is
 	environments: [
-		{ browserName: 'chrome', version: '34', platform: [ 'Linux' ] },
-		//{ browserName: 'chrome', version: '34', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
-		//{ browserName: 'internet explorer', version: '11', platform: 'Windows 8.1' },
-		//{ browserName: 'internet explorer', version: '10', platform: 'Windows 8' },
-		//{ browserName: 'internet explorer', version: '9', platform: 'Windows 7' },
-		//{ browserName: 'firefox', version: '28', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
-		//{ browserName: 'safari', version: '6', platform: 'OS X 10.8' },
-		//{ browserName: 'safari', version: '7', platform: 'OS X 10.9' }
+		{ browserName: 'chrome', version: '34', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
+		{ browserName: 'internet explorer', version: '11', platform: 'Windows 8.1' },
+		{ browserName: 'internet explorer', version: '10', platform: 'Windows 8' },
+		{ browserName: 'internet explorer', version: '9', platform: 'Windows 7' },
+		{ browserName: 'firefox', version: '28', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
+		{ browserName: 'safari', version: '6', platform: 'OS X 10.8' },
+		{ browserName: 'safari', version: '7', platform: 'OS X 10.9' }
 	],
 
 	// Maximum number of simultaneous integration tests that should be executed on the remote WebDriver service
@@ -40,7 +39,7 @@ define({
 	tunnelOptions: {
 		port: 4455,
         username: 'jason-beanstock',
-        accessKey: '86e204f3-5cb2-4230-8fb0-e225d0c60bfd'
+        accessKey: ''
     },
 
 	// The desired AMD loader to use when running unit tests (client.html/client.js). Omit to use the default Dojo

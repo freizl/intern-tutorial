@@ -10,18 +10,10 @@ define({
 	},
 
 	environments: [
-		{ browserName: 'chrome', version: '34', platform: [ 'OS X 10.9' ] }
+		{ browserName: 'firefox', version: '31', platform: [ 'LINUX' ] }
 	],
 
 	maxConcurrency: 3,
-
-	tunnel: 'SauceLabsTunnel',
-	tunnelOptions: {
-		port: 4466,
-		//proxy: 'http://localhost:8081',
-		username: 'jason-beanstock',
-		accessKey: '86e204f3-5cb2-4230-8fb0-e225d0c60bfd'
-	},
 
 	useLoader: {
 		'host-node': 'dojo/dojo',
