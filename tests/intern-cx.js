@@ -20,7 +20,7 @@ define({
 		port: 4466,
 		proxy: 'http://localhost:8081',
 		username: 'jason-beanstock',
-		accessKey: '86e204f3-5cb2-4230-8fb0-e225d0c60bfd'
+		accessKey: 'xxxxxxxxxxxxxxxxxx'
 	},
 
 	useLoader: {
