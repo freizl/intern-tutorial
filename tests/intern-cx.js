@@ -10,13 +10,14 @@ define({
 	},
 
 	environments: [
-		{ browserName: 'chrome', version: '34', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
-		{ browserName: 'internet explorer', version: '11', platform: 'Windows 8.1' },
-		{ browserName: 'internet explorer', version: '10', platform: 'Windows 8' },
-		{ browserName: 'internet explorer', version: '9', platform: 'Windows 7' },
+		//{ browserName: 'chrome', version: '34', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
+		//{ browserName: 'internet explorer', version: '11', platform: 'Windows 8.1' },
+		//{ browserName: 'internet explorer', version: '10', platform: 'Windows 8' },
+		//{ browserName: 'internet explorer', version: '9', platform: 'Windows 7' },
+		//{ browserName: 'safari', version: '6', platform: 'OS X 10.8' },
+		//{ browserName: 'safari', version: '7', platform: 'OS X 10.9' },
 		{ browserName: 'firefox', version: '28', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
-		{ browserName: 'safari', version: '6', platform: 'OS X 10.8' },
-		{ browserName: 'safari', version: '7', platform: 'OS X 10.9' }
+
 	],
 
 	maxConcurrency: 3,
@@ -24,7 +25,7 @@ define({
 	tunnel: 'SauceLabsTunnel',
 	tunnelOptions: {
 		port: 4466,
-		//proxy: 'http://localhost:8081',
+		//proxy: 'http://localhost:9091',
 		username: 'jason-beanstock',
 		accessKey: '86e204f3-5cb2-4230-8fb0-e225d0c60bfd'
 	},

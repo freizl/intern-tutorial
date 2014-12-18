@@ -11,6 +11,7 @@ define({
 
 	environments: [
 		{ browserName: 'firefox', version: '31', platform: [ 'LINUX' ] }
+		//{ browserName: 'chrome', version: '39', platform: [ 'LINUX' ] }
 	],
 
 	maxConcurrency: 3,

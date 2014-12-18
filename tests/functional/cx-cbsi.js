@@ -17,8 +17,16 @@ define([
 				})
 
 				// jsonwire:: setImplicitWaitTimeout
-				// FIXME: the test result vary per time waiting. How to increase timeout to SauceLab??
-				.setTimeout('implicit', 4500)
+				// FIXME:
+			    // 1. the test result vary per time waiting. How to increase timeout to SauceLab??
+				// 2. dont work with local chrome driver??
+				.setTimeout('implicit', 6000)
+
+				// pollUntil
+				// .then(pollUntil('return document.getElementsByTagName("div") >= 1;',
+				// 	 [],
+				// 	 8000,
+				// 	 1000))
 
 				.findAllByTagName('iframe')
 				.then(function (frames) {
@@ -29,6 +37,7 @@ define([
 				})
 
 				.then(function (srcs) {
+					//console.log(">>> srcs: ", srcs);
 
 					var i = 0,
 						xs = srcs.filter(function (x) { return !!x; }),
@@ -43,7 +52,7 @@ define([
 						if (src.indexOf('helix.beanstock.co/request') > 0) {
 							requestFrameSrc = src;
 							helixFramesCount++;
-						} else if (src.indexOf('helix.beanstock.co/clear') > 0) {
+						} else if (src.indexOf('helix.beanstock.co/cleared') > 0) {
 							clearFrameSrc = src;
 							helixFramesCount++;
 						}
