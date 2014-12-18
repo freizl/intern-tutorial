@@ -15,3 +15,7 @@
   1. `curl -X PUT -d 'initialPageRef=Foo' http://localhost:9090/proxy/9091/har'`
   2. start testing
   3. `curl http://localhost:8080/proxy/9091/har -o result.har`
+
+# Reference
+
+  1. https://support.saucelabs.com/entries/37604494-BrowserMob-with-Sauce-Connect-4
