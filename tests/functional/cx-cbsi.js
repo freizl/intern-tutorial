@@ -23,6 +23,7 @@ define([
 				.setTimeout('implicit', 6000)
 
 				// pollUntil
+			    // FIXME: this just doesn't work as expected.
 				// .then(pollUntil('return document.getElementsByTagName("div") >= 1;',
 				// 	 [],
 				// 	 8000,

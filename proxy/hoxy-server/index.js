@@ -1,6 +1,7 @@
 var hoxy = require('hoxy'),
 	fs = require('fs'),
-	proxy = new hoxy.Proxy().listen(9876)
+	port = 9900,     // TODO: may be pass from command line arguments
+	proxy = new hoxy.Proxy().listen(port)
 	;
 
 proxy.intercept({
@@ -16,7 +17,7 @@ proxy.intercept({
 		data
 		;
 
-	console.log('Intercept adnxs.com: ' + req.url);
+	console.log('[' + new Date() + ' ] Intercept adnxs.com: ' + req.url);
 
 	// when fpt jsonp request, overwrtte response
 	if (url.indexOf('fpt') === 0 && ys.length === 1) {
