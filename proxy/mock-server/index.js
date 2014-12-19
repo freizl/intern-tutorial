@@ -9,8 +9,10 @@ var mockserver = require('mockserver-grunt'),
 
 function foo (callback) {
 
-	request('http://localhost:8899/fpt', function (error, response, body) {
+	request.get('http://localhost:8899/fpt', function (error, response, body) {
 		console.log("====", error);
+		console.log("====", response.statusCode);
+		console.log("====", body);
 		if (!error && response.statusCode == 200) {
 			console.log(body);
 		}
@@ -24,8 +26,8 @@ function foo (callback) {
 // ==================================================
 
 mockserver.start_mockserver({
-    serverPort: 1080,
-    proxyPort: 1090,
+    serverPort: 8899,
+    proxyPort: 8888,
     verbose: true
 }).then(function () {
 
@@ -62,11 +64,11 @@ mockserver.start_mockserver({
 	// TEST
 	// ==================================================
 
-	var s = new Date().getTime(),
-		i = 0;
-	{
-		i++;
-	} while ((new Date().getTime()) - s <= 1000)
+	//var s = new Date().getTime(),
+	//	i = 0;
+	//{
+	//	i++;
+	//} while ((new Date().getTime()) - s <= 1000)
 
 	foo(function () { mockserver.stop_mockserver(); });
 
