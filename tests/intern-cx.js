@@ -16,7 +16,8 @@ define({
 		//{ browserName: 'internet explorer', version: '9', platform: 'Windows 7' },
 		//{ browserName: 'safari', version: '6', platform: 'OS X 10.8' },
 		//{ browserName: 'safari', version: '7', platform: 'OS X 10.9' },
-		{ browserName: 'firefox', version: '28', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
+		//{ browserName: 'firefox', version: '28', platform: [ 'OS X 10.9', 'Windows 7', 'Linux' ] },
+		{ browserName: 'firefox', version: '28', platform: [ 'Linux' ] },
 
 	],
 

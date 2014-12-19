@@ -2,12 +2,34 @@ define([
 	'intern!tdd',
 	'intern/chai!assert',
 	'require',
+	'intern/dojo/request',
 	'intern/dojo/promise/all',
 	'intern/dojo/node!leadfoot/helpers/pollUntil'
-], function (tdd, assert, require, all, pollUntil) {
+], function (tdd, assert, require, request, all, pollUntil) {
+
+	var proxyUrl = 'http://localhost:8080/proxy/9876',
+		harUrl = proxyUrl + '/har';
+
+
 	tdd.suite('cbsi', function () {
 
+		tdd.before(function () {
+			console.log(">>>>> start testing");
+		})
+		tdd.after(function () {
+			console.log(">>>>> after testing");
+		})
+
 		tdd.test('gamefaqs.com', function () {
+
+			// Start HAR capture request
+			// FIXME: could be combined with `this.remote` ??
+			request.put(harUrl, {
+				headers: {initialPageRef: 'testcase_cx-cbsi-gamefaqs'}
+			}).then(function  () {
+				console.log("===== started har capture request");
+			})
+
 			return this.remote
 				.get(require.toUrl('tests/functional/cx-cbsi.html'))
 
@@ -83,7 +105,35 @@ define([
 						assert(true, 'resource timing API is not supported. no further assertion');
 					}
 				})
+
+				// verify HAR
+				.then(function () {
+					return request.get(harUrl);
+				})
+				.then(function (response) {
+					var resp = JSON.parse(response);
+
+					//console.log("====== 1", resp.log.entries);
+					if (!!resp && !!resp.log && resp.log.entries) {
+						var xs = resp.log.entries.filter(urlInExpectDomains);
+						console.log("====== 2", xs);
+
+						assert(xs.length >= (expectDomains.length+1), 'at least 3+ requests have been made.')
+					} else {
+						return request.get(harUrl);
+					}
+				})
 			;
 		});
 	});
+
+	var expectDomains = ['helix.beanstock.co',
+						 'ib.adnxs.com'
+						];
+
+	function urlInExpectDomains (page) {
+		var xs = expectDomains.filter(function (x) { return page.request.url.indexOf(x) >= 0; });
+		return xs.length >= 1;
+	}
+
 });
