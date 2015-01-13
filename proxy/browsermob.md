@@ -1,8 +1,8 @@
-# Start BMP
+# Start BMP master server
 
   - `/home/beanstock/Downloads/browsermob-proxy-2.0-beta-9/bin/browsermob-proxy`
 
-# Start a proxy
+# Start a slave proxy
 
   - `curl -X POST http://localhost:8080/proxy`
      will return a port for new proxy
