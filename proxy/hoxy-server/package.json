@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "connect": "^3.3.4",
-    "hoxy": "^1.2.1"
+    "hoxy": "^1.2.1",
+    "ramda": "^0.8.0"
   }
 }
