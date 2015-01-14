@@ -34,7 +34,7 @@ proxy.intercept({
 
 
 // ====================
-// Criteo
+// Criteo creatives
 // ====================
 
 
@@ -80,9 +80,6 @@ function addMock (name, opts, handler) {
 	if (name) {
 		proxy.intercept(opts, handler)
 		handlers[name] = getInterceptHandler('request')
-		console.log(opts);
-		console.log(handler);
-		console.log(handlers[name]);
 		return 'add intercept success for: ' + name
 	} else {
 		return 'NO intercept added without specify a name'
@@ -108,6 +105,7 @@ app.use('/mockCriteo', function(req, res, next){
 			resp.string = "crtg_content = '" + content + "'; (function(){document.cookie = 'crtg_rta=' + escape(crtg_content) + '; path=/; expires=Wed, 11 Feb 2016 19:02:31 GMT; domain=localhost';})();"
 		});
 
+	console.log(">>> Mock request: ", name, content);
 	res.end(result)
 	next();
 })
@@ -120,6 +118,7 @@ app.use('/removeMock', function(req, res, next){
 
 	if (!!query.name && handlers[name]) {
 		removeInterceptHandler(phase, name)
+		console.log(">>> rm mock request: ", name);
 		res.end('intercepts have been removed: ' + name)
 	} else {
 		res.end('nothing will be removed for ' + name)
